@@ -18,6 +18,7 @@ export const App = () => {
 
   const onLoadRandom = () => dispatch(fetchRandom());
   const onLoadRandomCorgi = () => dispatch(fetchRandomBreed('pembroke'));
+  const onGetError = () => dispatch(fetchRandomBreed('something'));
   const onReset = () => dispatch(resetList());
 
   useEffect(() => {
@@ -40,6 +41,7 @@ export const App = () => {
         <div className="App-toolbar">
           <button className="App-btn" onClick={onLoadRandom}>Get New</button>
           <button className="App-btn" onClick={onLoadRandomCorgi}>Get Corgi</button>
+          <button className="App-btn" onClick={onGetError}>Get Error</button>
           <button className="App-btn" onClick={onReset}>Reset</button>
         </div>
         {isLoading && <Loader isLoading={isLoading} />}

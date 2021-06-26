@@ -39,4 +39,8 @@
   color: #EEEDF0;
   border: none;
   height: 35px;
+  cursor: pointer;
+}
+.App-btn:active { 
+  background-color: #BF7B3F;
 }

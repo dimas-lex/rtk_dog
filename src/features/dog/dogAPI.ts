@@ -13,7 +13,7 @@ export const dogAPI = {
   },
 
   fetchRandomBreed: async (breed: string) => {
-    return fetch(`https://dog.ceo/api/brseed/${breed}/images/random`)
+    return fetch(`https://dog.ceo/api/breed/${breed}/images/random`)
       .then((response: any) => response.json())
       .then(parseResponse);
   } 
