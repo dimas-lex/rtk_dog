@@ -1,0 +1,25 @@
+.error-box {
+  position: absolute;
+  top: 5px;
+  left: 0;
+  height: 30px;
+  width: 100%;
+  background-color: #8C2F1B;
+  color: #EEEDF0;
+  font-size: 16px;
+  line-height: 30px;
+  text-align: center; 
+  animation: errorMsg 1s ease;
+}
+
+@keyframes errorMsg {
+  0% {
+    opacity: 0;
+  } 
+  10% {
+    opacity: 0.5;
+  } 
+  100% {
+    opacity: 1;
+  } 
+}

@@ -1,0 +1,36 @@
+.loader {
+  height: 5px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+.loader__bar {
+  position: absolute;
+  height: 5px;
+  background-color: #EEEDF0;
+  animation-name: loader-animation;
+  animation-duration: 0.5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes loader-animation {
+  0% {
+    width: 0%;
+  }
+  49% {
+    width: 100%;
+    left: 0%
+  }
+  50% {
+    left: 100%;
+    width: 0;
+  }
+  100% {
+    left: 0%;
+    width: 100%
+  }
+}

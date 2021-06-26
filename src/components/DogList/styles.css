@@ -1,0 +1,13 @@
+.dog-list {
+  margin: 0 auto;
+  display: flex;
+  flex-flow: row wrap;
+  width: 100%;
+  height: auto; 
+  transition: 0.5s all;
+}
+
+.dog-list--loading > .dog:first-of-type { 
+  margin-left: 150px; 
+  transition: 1s all;
+}

@@ -1,26 +1,50 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
+import './App.css';
+import React, { useEffect } from 'react';
+import { useAppSelector, useAppDispatch } from './app/hooks';
+import { fetchRandom, fetchRandomBreed, resetList, removeError } from './features/dog/dogSlice';
+import { RootState } from './app/store';
+import { DogList } from './components/DogList';
+import { Loader } from './components/Loader';
+import { ErrorBox } from './components/ErrorBox';
+
+
+
+export const App = () => {
+  const dogs = useAppSelector((state: RootState) => state.dogs.entities);
+  const isLoading = useAppSelector((state: RootState) => state.dogs.isLoading);
+  const errorMessage = useAppSelector((state: RootState) => state.dogs.errorMessage);
+  const dispatch = useAppDispatch();
+
+  const onLoadRandom = () => dispatch(fetchRandom());
+  const onLoadRandomCorgi = () => dispatch(fetchRandomBreed('pembroke'));
+  const onReset = () => dispatch(resetList());
+
+  useEffect(() => {
+    dispatch(fetchRandom())
+  }, [dispatch]);
+
+  useEffect(() => {
+    setTimeout(() => {
+      dispatch(removeError());
+    }, 9000);
+  }, [errorMessage, dispatch]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <header className="App-header"> 
+        <ErrorBox error={errorMessage} />
+        DOGS
       </header>
+      <main className="App-main">
+        <div className="App-toolbar">
+          <button className="App-btn" onClick={onLoadRandom}>Get New</button>
+          <button className="App-btn" onClick={onLoadRandomCorgi}>Get Corgi</button>
+          <button className="App-btn" onClick={onReset}>Reset</button>
+        </div>
+        {isLoading && <Loader isLoading={isLoading} />}
+        <DogList dogs={dogs} isLoading={isLoading} />
+      </main>
     </div>
   );
 }
-
-export default App;
