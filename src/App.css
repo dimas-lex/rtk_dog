@@ -1,8 +1,8 @@
-.App {
+.app {
   text-align: center;
 }
  
-.App-header {
+.app__header {
   background-color: #184059;
   height: 120px;
   display: flex;
@@ -14,16 +14,16 @@
   position: relative;
 }
 
-.App-link {
+.app__link {
   color: #BF7B3F;
 }
 
-.App-main { 
+.app__main { 
   background-color: #EEEDF0;
   min-height: 100vh; 
 }
 
-.App-toolbar { 
+.app__toolbar { 
   background-color: #5D8AA6;
   height: 50px; 
   padding: 5px;
@@ -32,7 +32,7 @@
   align-items: center;
 }
  
-.App-btn {
+.app__btn {
   margin: 0 15px;
   padding: 5px 15px;
   background-color: #184059;
@@ -41,6 +41,6 @@
   height: 35px;
   cursor: pointer;
 }
-.App-btn:active { 
+.app__btn:active { 
   background-color: #BF7B3F;
 }

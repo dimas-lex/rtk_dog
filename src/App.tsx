@@ -32,17 +32,17 @@ export const App = () => {
   }, [errorMessage, dispatch]);
 
   return (
-    <div className="App">
-      <header className="App-header"> 
+    <div className="app">
+      <header className="app__header">
         <ErrorBox error={errorMessage} />
         DOGS
       </header>
-      <main className="App-main">
-        <div className="App-toolbar">
-          <button className="App-btn" onClick={onLoadRandom}>Get New</button>
-          <button className="App-btn" onClick={onLoadRandomCorgi}>Get Corgi</button>
-          <button className="App-btn" onClick={onGetError}>Get Error</button>
-          <button className="App-btn" onClick={onReset}>Reset</button>
+      <main className="app__main">
+        <div className="app__toolbar">
+          <button className="app__btn cy-get-new" onClick={onLoadRandom}>Get New</button>
+          <button className="app__btn cy-get-corgi" onClick={onLoadRandomCorgi}>Get Corgi</button>
+          <button className="app__btn cy-get-error" onClick={onGetError}>Get Error</button>
+          <button className="app__btn cy-get-reset" onClick={onReset}>Reset</button>
         </div>
         {isLoading && <Loader isLoading={isLoading} />}
         <DogList dogs={dogs} isLoading={isLoading} />
