@@ -1,11 +1,6 @@
-const parseResponse  = (data: any) => { 
-  if (data.status === 'error') throw new Error('Something went wrong')
-  return {
-    data: data.message
-  }
-};
+import { parseResponse } from "../../utils";
 
-export const dogAPI = {  
+export const dogAPI = {
   fetchRandom: async () => {
     return fetch( 'https://dog.ceo/api/breeds/image/random')
       .then((response: any) => response.json())
@@ -16,5 +11,5 @@ export const dogAPI = {
     return fetch(`https://dog.ceo/api/breed/${breed}/images/random`)
       .then((response: any) => response.json())
       .then(parseResponse);
-  } 
+  }
 };

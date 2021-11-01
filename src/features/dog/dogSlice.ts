@@ -3,21 +3,24 @@ import { RootState } from '../../app/store';
 import { dogAPI } from './dogAPI';
 
 interface IDogState {
-  entities: any[],
+  dogItems: any[],
   isLoading: boolean,
   errorMessage?: string | null;
 };
 
 const initialState: IDogState = {
-  entities: [],
+  dogItems: [],
   isLoading: false,
   errorMessage: null,
 };
 
 export const fetchRandomBreed = createAsyncThunk(
   'dog/fetchRandom',
-  async (breed: string, thunkAPI) => {
+  async (breed: string | null, thunkAPI) => {
     try {
+      if (!breed) {
+        return;
+      }
       const response = await dogAPI.fetchRandomBreed(breed);
       return response.data;
 
@@ -52,7 +55,7 @@ export const dogSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(resetList, (state: IDogState) => {
-        state.entities = [];
+        state.dogItems = [];
       })
       .addCase(removeError, (state: IDogState) => {
         state.errorMessage = null;
@@ -73,7 +76,7 @@ export const dogSlice = createSlice({
       .addMatcher(
         isAnyOf(fetchRandom.fulfilled, fetchRandomBreed.fulfilled),
         (state: IDogState, action) => {
-          state.entities.unshift(action.payload);
+          state.dogItems.unshift(action.payload);
           state.isLoading = false;
           state.errorMessage = null;
         })
@@ -81,7 +84,7 @@ export const dogSlice = createSlice({
   }
 });
 
-export const selectDogsCount = (state: RootState) => state.dogs.entities.length
-export const selectDogs = (state: RootState) => state.dogs.entities.length
+export const selectDogsCount = (state: RootState) => state.dogs.dogItems.length;
+export const selectDogs = (state: RootState) => state.dogs.dogItems;
 
 export const dogReducer = dogSlice.reducer;

@@ -1,9 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { dogReducer } from '../features/dog/dogSlice';
+import { breedReducer } from '../features/breed/breedSlice';
 
 export const store = configureStore({
   reducer: {
     dogs: dogReducer,
+    breeds: breedReducer
   },
 })
 

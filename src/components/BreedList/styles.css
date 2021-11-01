@@ -1,0 +1,12 @@
+.breed-list {
+  margin: 0 auto;
+  display: flex;
+  flex-flow: row wrap;
+  width: 200px;
+  height: auto;
+  transition: 0.5s all;
+}
+
+.breed-list--loading {
+
+}
